@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JS + CSS Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand second-hand"></div>
+        </div>
+    </div>
+
+    <script>
+        function setDate() {
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+
+            // transform seconds into degrees to rotate hands
+            // adding 90deg since we offset it by 90deg in .hand (css line 45)
+            const secondsToDegrees = ((seconds / 60) * 360) + 90;
+            const secondHand = document.querySelector('.second-hand');
+            secondHand.style.transform = `rotate(${secondsToDegrees}deg)`
+
+            const minutesToDegrees = ((minutes / 60) * 360) + 90;
+            const minuteHand = document.querySelector('.min-hand');
+            minuteHand.style.transform = `rotate(${minutesToDegrees}deg)`
+
+            const hoursToDegrees = ((hours / 60) * 360) + 90;
+            const hourHand = document.querySelector('.hour-hand');
+            hourHand.style.transform = `rotate(${hoursToDegrees}deg)`
+        }
+
+        setInterval(setDate, 1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
